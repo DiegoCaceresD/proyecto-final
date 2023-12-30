@@ -1,11 +1,12 @@
 {
-  "name": "01_pre-entrega",
+  "name": "proyecto-final",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "type": "module",
   "scripts": {
     "start":"node src/app.js",
+    "dev":"nodemon src/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
