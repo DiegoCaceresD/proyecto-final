@@ -5,6 +5,7 @@ import MongoSingleton from "../config/mongodb-singleton.js";
 let productsService
 let cartsService
 let ticketService
+let userService
 
 async function initializeMongoService() {
   logger.debug("Iniciando servicio para MongoDB");
@@ -24,6 +25,10 @@ async function initializeMongoService() {
     const { default: TicketServiceMongo } = await import('./dao/db/services/TicketService.js');
     ticketService = new TicketServiceMongo();
     logger.debug("Servicio de ticket cargado: ", ticketService);
+
+    const { default: UserServiceMongo } = await import('./dao/db/services/userService.js');
+    userService = new UserServiceMongo();
+    logger.debug("Servicio de user cargado: ", userService);
 
 
 } catch (error) {
@@ -45,10 +50,13 @@ switch (config.persistence) {
     cartsService = new CartsServiceFileSystem();
     logger.debug("Servicio de carts cargado: ", cartsService);
 
-    const { default: TicketServiceFileSystem } = await import('./dao/db/services/TicketService.js');
+    const { default: TicketServiceFileSystem } = await import('./dao/fileSystem/services/TicketService.js');
     ticketService = new TicketServiceFileSystem();
-    logger.debug("Servicio de ticket cargado:");
-    logger.debug(ticketService);
+    logger.debug("Servicio de ticket cargado:", ticketService);
+
+    const { default: UserServiceFileSystem } = await import('./dao/fileSystem/services/userService.js');
+    ticketService = new UserServiceFileSystem();
+    logger.debug("Servicio de user cargado:", userService);
 
     break;
 
@@ -57,4 +65,4 @@ switch (config.persistence) {
     process.exit(1);
 }
 
-export { productsService, cartsService, ticketService };
+export { productsService, cartsService, ticketService, userService };

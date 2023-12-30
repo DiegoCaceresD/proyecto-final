@@ -21,6 +21,7 @@ import compression from "express-compression";
 import  logger  from "./config/logger.js";
 import swaggerJSdoc from "swagger-jsdoc";
 import swaggerUIExpress from "swagger-ui-express";
+import userRouter from "./routes/user.router.js"
 
 
 const app = express();
@@ -101,6 +102,7 @@ app.use('/github', githubLoginViewRouter);
 app.use('/api/email', emailRouter)
 app.use('/api/sms', smsRouter)
 app.use('/loggerTest', loggerRouter)
+app.use('/api/users', userRouter);
 app.listen(PORT, () => {
   logger.info(`Server run on port: ${PORT}`);
 });

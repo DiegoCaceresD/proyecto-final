@@ -3,6 +3,7 @@ import passport from "passport";
 import logger from "../config/logger.js";
 import CustomRouter from "./custom/custom.router.js";
 import { generateJWToken } from "../utils.js";
+import userModel from "../services/dao/db/models/user.model.js";
 
 const router = Router();
 
@@ -56,7 +57,6 @@ export default class SessionRouter extends CustomRouter {
       }),
       async (req, res) => {
         const user = req.user;
-        console.log("Entro al login");
         logger.info("User found to login: ", user._doc);
         if (!user) {
           logger.warning("Credenciales incorrectas");

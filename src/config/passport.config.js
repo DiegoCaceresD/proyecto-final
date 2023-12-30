@@ -124,6 +124,13 @@ const initializePassport = () => {
             return done(null, false);
           }
           logger.info("Login - Usuario encontrado: ", user._doc )
+
+          try {
+            logger.info("actualizacion del login id: ", user._doc._id)
+            await userModel.updateOne({ _id: user._doc._id }, { lastLogin: new Date() });
+          } catch (error) {
+            logger.error('Error al actualizar lastLogin:', error);
+          }
           //validacion con bcrypt
           if (!isValidPassword(user, password)) {
             logger.warning("invalid credentials for user: " + username);

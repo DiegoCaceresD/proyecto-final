@@ -21,6 +21,7 @@ const schema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Cart',
     },
+    lastLogin: { type: Date, default: null }
 })
 
 const userModel = mongoose.model(collection, schema);
