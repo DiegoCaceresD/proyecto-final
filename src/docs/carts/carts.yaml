@@ -1,0 +1,119 @@
+paths:
+  /api/carts/:
+    post:
+      summary: crea un carrito.
+      tags:
+        - Carts
+      responses:
+        "200":
+          description: La operacion fue exitosa, se ha creado el carrito.
+        "400":
+          description: Ocurrio un error en la consulta
+        "500":
+          description: Ocurrio un error en el servidor
+  /api/carts/allcarts:
+    get:
+      summary: obtiene todos los carritos disponibles.
+      tags:
+        - Carts
+      responses:
+        "200":
+          description: La operacion fue exitosa, se retornan todos los carritos
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#components/schemas/Cart'
+        "400":
+          description: Ocurrio un error en la consulta
+        "500":
+          description: Ocurrio un error en el servidor
+  /api/carts/{cid}:
+    get:
+      summary: obtiene un carrito por el ID.
+      tags:
+        - Carts
+      parameters:
+        - name: cid
+          in: path
+          required: true
+          description: El id del carrito debe ingresarse
+          schema: 
+            $type: String
+      responses:
+        "200":
+          description: La operacion fue exitosa, se retorna el carrito
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#components/schemas/Cart'
+        "400":
+          description: Ocurrio un error en la consulta
+        "404":
+          description: Producto no encontrado
+        "500":
+          description: Ocurrio un error en el servidor
+  /api/carts/{cid}/product/{pid}:
+    post:
+      summary: Asigna un producto a un carrito.
+      tags:
+        - Carts
+      parameters:
+        - name: cid
+          in: path
+          required: true
+          description: El id del carrito debe ingresarse
+          schema: 
+            $type: String
+        - name: pid
+          in: path
+          required: true
+          description: El id del producto debe ingresarse
+          schema: 
+            $type: String
+      responses:
+        "200":
+          description: La operacion fue exitosa, se asignó el producto al carrito
+        "400":
+          description: Ocurrio un error en la consulta
+        "500":
+          description: Ocurrio un error en el servidor
+  /api/carts/{cid}/purchase:
+    post:
+      summary: Completa la compra del carrito.
+      tags:
+        - Carts
+      parameters:
+        - name: cid
+          in: path
+          required: true
+          description: El id del carrito debe ingresarse
+          schema: 
+            $type: String
+      responses:
+        "200":
+          description: La operacion fue exitosa, se ha completado la compra.
+        "400":
+          description: Ocurrio un error en la consulta
+        "500":
+          description: Ocurrio un error en el servidor
+
+components:
+  schemas:
+    Cart:
+      type: object
+      properties:
+        _id:
+          type: ObjectId
+          description: Id autogenerado por mongo
+        products: 
+          type: array
+          description: array que contiene el producto asociado
+      example:
+        _id: ObjectId("64f7e88b46573ca12f81cc63")
+        product: ObjectId("656cc384a5c30953052e5976")
+        quantity: 1
+        

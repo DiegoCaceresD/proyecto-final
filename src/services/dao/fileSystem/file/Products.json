@@ -1,0 +1,61 @@
+[
+  {
+    "id": 2,
+    "title": "Manzana",
+    "description": "2kg",
+    "price": 400,
+    "thumbnail": "manzana.png",
+    "code": "RE95FD",
+    "stock": 60
+  },
+  {
+    "title": "Vaso",
+    "description": "Grande",
+    "price": 300,
+    "thumbnail": "vaso.png",
+    "code": "PG97HD",
+    "stock": 300,
+    "id": 3
+  },
+  {
+    "id": 5,
+    "title": "Melon",
+    "description": "3kg",
+    "price": 400,
+    "thumbnail": "melon.png",
+    "code": " QF21RW",
+    "stock": 60
+  },
+  {
+    "id": 6,
+    "title": "Kiwi",
+    "description": "4kg",
+    "price": 400,
+    "thumbnail": "kiwi.png",
+    "code": "HG95SAD",
+    "stock": 60
+  },
+  {
+    "title": "Fresa",
+    "description": "8kg",
+    "price": 400,
+    "code": "PI65GH",
+    "stock": 60,
+    "status": true,
+    "category": "fruta",
+    "id": 7
+  },
+  {
+    "title": "Fresa",
+    "description": "8kg",
+    "price": "400",
+    "thumbnails": [
+      "C:\\Users\\dcaceres\\Desktop\\CURSOS\\curso backend\\pre-entregas\\01_pre-entrega\\src\\public\\img\\1690238805787-fresa.jpg"
+    ],
+    "code": "PI65GH",
+    "stock": "60",
+    "status": true,
+    "category": "fruta",
+    "id": 8
+  }
+]

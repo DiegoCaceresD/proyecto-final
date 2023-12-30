@@ -1,0 +1,78 @@
+paths:
+  /api/products/:
+    get:
+      summary: obtiene todos los productos disponibles.
+      tags:
+        - Products
+      responses:
+        "200":
+          description: La operacion fue exitosa, se retornan todos los productos
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#components/schemas/Product'
+        "400":
+          description: Ocurrio un error en la consulta
+        "500":
+          description: Ocurrio un error en el servidor
+  /api/products/{pid}:
+    get:
+      summary: obtiene un porducto por el ID.
+      tags:
+        - Products
+      parameters:
+        - name: pid
+          in: path
+          required: true
+          description: El id del producto debe ingresarse
+          schema: 
+            $type: String
+      responses:
+        "200":
+          description: La operacion fue exitosa, se retorna el producto
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#components/schemas/Product'
+        "400":
+          description: Ocurrio un error en la consulta
+        "404":
+          description: Producto no encontrado
+        "500":
+          description: Ocurrio un error en el servidor
+
+components:
+  schemas:
+    Product:
+      type: object
+      properties:
+        _id:
+          type: ObjectId
+          description: Id autogenerado por mongo
+        title:
+          type: String
+          description: Nombre del producto
+        description:
+          type: String
+          description: Descripcion del producto
+        price:
+          type: Number
+          description: Precio del producto
+        stock:
+          type: Number
+          description: Stock del producto ingresado
+        category:
+          type: String
+          description: Categoría del producto ingresado
+      example:
+        _id: ObjectId("64f7e88b46573ca12f81cc63")
+        title: ejemplo titulo
+        description: ejemplo descripcion
+        price: 29.99
+        stock: 100
+        category: ejemplo categoria
+        
