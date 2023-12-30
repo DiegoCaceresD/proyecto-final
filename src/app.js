@@ -24,8 +24,8 @@ import swaggerUIExpress from "swagger-ui-express";
 
 
 const app = express();
-const PORT = config.port;
-const DB = config.mongoUrl;
+const PORT = process.env.PORT;
+const DB = process.env.URL_MONGO;
 const sessionRouter = new SessionRouter();
 const productRouter = new ProductRouter();
 const swaggerOption = {
