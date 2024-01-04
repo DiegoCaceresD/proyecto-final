@@ -22,7 +22,7 @@ async function initializeMongoService() {
     cartsService = new CartsServiceMongo();
     logger.debug("Servicio de carts cargado: ", cartsService);
 
-    const { default: TicketServiceMongo } = await import('./dao/db/services/TicketService.js');
+    const { default: TicketServiceMongo } = await import('./dao/db/services/ticketService.js');
     ticketService = new TicketServiceMongo();
     logger.debug("Servicio de ticket cargado: ", ticketService);
 
