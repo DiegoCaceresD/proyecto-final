@@ -4,6 +4,7 @@ import { generateProducts } from "../utils.js";
 import { productErrorInfo } from "../services/errors/messages/product-error.message.js";
 import CustomError from "../services/errors/CustomError.js";
 import EErrors from "../services/errors/errors-enum.js";
+import logger from "../config/logger.js";
 
 export async function addProduct(req, res) {
   try {

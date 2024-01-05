@@ -14,6 +14,7 @@ import SessionRouter from "./routes/sessions.router.js";
 import config from "./config/config.js";
 import cors from 'cors';
 import loggerRouter from "./routes/logger.router.js"
+import ticketRouter from "./routes/ticket.router.js"
 import emailRouter from './routes/email.router.js'
 import smsRouter from './routes/sms.router.js'
 import ProductRouter from "./routes/products.router.js";
@@ -103,6 +104,7 @@ app.use('/api/email', emailRouter)
 app.use('/api/sms', smsRouter)
 app.use('/loggerTest', loggerRouter)
 app.use('/api/users', userRouter);
+app.use('/api/tickets', ticketRouter);
 app.listen(PORT, () => {
   logger.info(`Server run on port: ${PORT}`);
 });

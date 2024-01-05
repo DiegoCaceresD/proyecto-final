@@ -1,9 +1,10 @@
-import { cartsService } from "../services/factory.js";
+import { cartsService, userService } from "../services/factory.js";
 import { ticketService } from "../services/factory.js";
 import CustomError from "../services/errors/CustomError.js";
 import EErrors from "../services/errors/errors-enum.js";
 import { cartErrorInfo } from "../services/errors/messages/cart-error.message.js";
 import logger from "../config/logger.js";
+import userModel from "../services/dao/db/models/user.model.js";
 
 export async function createCart(req, res) {
   try {
@@ -135,8 +136,12 @@ export async function purchase(req, res) {
 
 export const purchaseCart = async (req, res) => {
   try {
+    let purchaserEmail
     const cartId = req.params.cid;
-    let purchaserEmail = req.user.email ? req.user.email : "user@example.com";
+    const user = await userService.getUserByCartId(cartId)
+    if (user) {
+      purchaserEmail = user.email;
+    }
     const cart = await cartsService.getCartById(cartId);
     // Verificar el stock y realizar la compra
     const purchaseResult = await ticketService.generateTicket(
@@ -159,7 +164,7 @@ export const purchaseCart = async (req, res) => {
       });
     }
   } catch (error) {
-    logger.error(error);
+    logger.error(error.message);
     res.status(500).json({ status: "error", msg: error.message });
   }
 };
