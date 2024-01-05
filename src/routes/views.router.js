@@ -9,8 +9,8 @@ router.get('/',async(req,res)=>{
     let page = parseInt(req.query.page);
     if (!page) page = 1;
     let result = await ProductModel.paginate({}, { page, limit: 5, lean: true });
-    result.prevLink = result.hasPrevPage ? `https://proyecto-final-production-e8c0.up.railway.app//?page=${result.prevPage}` : '';
-    result.nextLink = result.hasNextPage ? `https://proyecto-final-production-e8c0.up.railway.app//?page=${result.nextPage}` : '';
+    result.prevLink = result.hasPrevPage ? `https://proyecto-final-production-e8c0.up.railway.app/?page=${result.prevPage}` : '';
+    result.nextLink = result.hasNextPage ? `https://proyecto-final-production-e8c0.up.railway.app/?page=${result.nextPage}` : '';
     result.isValid = !(page <= 0 || page > result.totalPages)
     res.render('products',result)
 })
