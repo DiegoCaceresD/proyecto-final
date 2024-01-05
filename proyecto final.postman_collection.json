@@ -1,0 +1,369 @@
+{
+	"info": {
+		"_postman_id": "8eeaad15-a005-41f4-a7ba-a61e7fe71bcd",
+		"name": "proyecto final",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "31756824"
+	},
+	"item": [
+		{
+			"name": "proyecto",
+			"item": [
+				{
+					"name": "product",
+					"item": [
+						{
+							"name": "getProductsWithFiltes",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/api/products?limit=5&category=Electrónica&availability=true",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"products"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "5"
+										},
+										{
+											"key": "category",
+											"value": "Electrónica"
+										},
+										{
+											"key": "availability",
+											"value": "true"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getProductById",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "localhost:8080/api/products/4"
+							},
+							"response": []
+						},
+						{
+							"name": "AddProduct",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\": \"Fresa\",\r\n    \"description\": \"8kg\",\r\n    \"price\": 400,\r\n    \"thumbnail\": \"fresa.png\",\r\n    \"code\": \"PI65GH\",\r\n    \"stock\": 60,\r\n    \"category\": \"fruta\"\r\n  }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "localhost:8080/api/products"
+							},
+							"response": []
+						},
+						{
+							"name": "updateProductByd",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\": \"Morron Verde\",\r\n    \"description\": \"7kg\",\r\n    \"price\": 400,\r\n    \"thumbnail\": \"morron-verde.png\",\r\n    \"code\": \"QW12PO\",\r\n    \"stock\": 60\r\n  }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "localhost:8080/api/products/7"
+							},
+							"response": []
+						},
+						{
+							"name": "deleteProductById",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": "localhost:8080/api/products/4"
+							},
+							"response": []
+						},
+						{
+							"name": "getAllProducts",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "localhost:8080/api/products"
+							},
+							"response": []
+						},
+						{
+							"name": "getAlProducts MOCK",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "localhost:8080/api/products/mockingproducts/faker"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "cart",
+					"item": [
+						{
+							"name": "createCart",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": "localhost:8080/api/carts"
+							},
+							"response": []
+						},
+						{
+							"name": "addProductTocartById",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": "localhost:8080/api/carts/64fd16cec799a9d41f293e68/product/64f7e88b46573ca12f81cc"
+							},
+							"response": []
+						},
+						{
+							"name": "getCartById",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "localhost:8080/api/carts/64fd16cec799a9d41f293e68"
+							},
+							"response": []
+						},
+						{
+							"name": "getAllCarts",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "localhost:8080/api/carts"
+							},
+							"response": []
+						},
+						{
+							"name": "updateCart",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": "localhost:8080/api/carts/2"
+							},
+							"response": []
+						},
+						{
+							"name": "UpdateProductQuantity",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "stock",
+											"value": "12",
+											"type": "default"
+										}
+									]
+								},
+								"url": "localhost:8080/api/carts/64fe363e2cf2ab4276b6f362/products/64f7e88b46573ca12f81cc6d"
+							},
+							"response": []
+						},
+						{
+							"name": "deleteProductInCart",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": "localhost:8080/api/carts/*cid*/products/*pid"
+							},
+							"response": []
+						},
+						{
+							"name": "deleteAllProductsInCart",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/api/carts/:cid",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"carts",
+										":cid"
+									],
+									"variable": [
+										{
+											"key": "cid",
+											"value": ""
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "purchaseCart",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": "localhost:8080/api/carts/656e7ee60ac8d41779d94ddf/purchase"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "userRequests",
+					"item": [
+						{
+							"name": "register",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"first_name\": \"Juan\",\r\n    \"last_name\": \"Perez\",\r\n    \"email\": \"juan@mail.com\",\r\n    \"password\": \"123asd\",\r\n    \"age\": \"25\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:8080/api/sessions/register"
+							},
+							"response": []
+						},
+						{
+							"name": "user login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"pedro@mail.com\",\r\n    \"password\": \"123asd\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:8080/api/sessions/login"
+							},
+							"response": []
+						},
+						{
+							"name": "get users",
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						},
+						{
+							"name": "deleteInactiveUsers",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": "http://localhost:8080/api/users/deleteInactiveUsers"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Mailing",
+					"item": [
+						{
+							"name": "Email nodemailer",
+							"item": [
+								{
+									"name": "senEmail With Attachments",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": "http://localhost:8080/api/email"
+									},
+									"response": []
+								},
+								{
+									"name": "sendEmail",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": "http://localhost:8080/api/email"
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "SMS twilio",
+							"item": [
+								{
+									"name": "SendSMS",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": "http://localhost:8080/api/sms"
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Tickets",
+					"item": [
+						{
+							"name": "getTicketById",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "localhost:8080/api/tickets/6597553be722a2d22fd60016"
+							},
+							"response": []
+						},
+						{
+							"name": "getTickets",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "localhost:8080/api/tickets"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "loggertest",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

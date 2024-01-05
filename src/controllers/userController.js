@@ -7,7 +7,6 @@ export async function getUsers( req, res ) {
     logger.info("get users controller")
     try {
         let users = await userService.getUsers();
-        logger.info(users)
         let usersDTO = users.map(user => new UserDTO(user))
         return res.status(200).send({payload: usersDTO})
     } catch (error) {
